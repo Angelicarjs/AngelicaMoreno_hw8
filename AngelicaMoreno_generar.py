@@ -5,14 +5,14 @@ import numpy as np
 def sample_1(N):
 	p = [-10,-5,3,9]
 	a = [0.1,0.4,0.2,0.3]
-	rta = numpy.random.choice(p,N,a)
+	rta = np.random.choice(p,N,a)
 	return rta
 
 #Funcion que retorna numeros aleatorios siguiendo la distribucion discreta de probabilidad exponencial dada
 
 def sample_2(N):
 	b = 0.5
-	rta = numpy.random.choice(b,N)
+	rta = np.random.choice(b,N)
 	return rta
 
 #Funcion que retorna M promedios asociados a dada la funcion de sampleo.
@@ -21,7 +21,13 @@ def get_mean(sampling_fun,N,M):
 	prome = []
 	#Ciclo que me genera las el M promedios 
 	for i in range(N):
-		actual = sampling_fun(M)
+
+		if (sampling_fun == 'sample_1'):
+			actual = sample_1(M)
+
+		if (sampling_fun == 'sample_2'):	
+			actual = sample_2(M)
+
 		prome.append(actual)
 
 	promedios = np.array(prome)
